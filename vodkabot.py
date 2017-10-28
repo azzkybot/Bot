@@ -196,7 +196,7 @@ def SEND_MESSAGE(op):
                     else:
                         gInviMids = [contact.mid for contact in group.invitee]
                         client.cancelGroupInvitation(msg.to, gInviMids)
-                        sendMessage(msg.to, str(len(group.invitee)) + " Done")
+                        sendMessage(msg.to, str(len(group.invitee)) + " 個用戶被取消邀請")
                 if "invite:" in msg.text:
                     key = msg.text[-33:]
                     client.findAndAddContactsByMid(key)
