@@ -260,7 +260,7 @@ def SEND_MESSAGE(op):
                                 print rom
                                 chiya += rom[1] + "\n"
 
-                        sendMessage(msg.to, "看到訊息者 %s\nthat's it\n\nPeople who have ignored reads\n%sIt is abnormal ♪\n\nReading point creation date n time:\n[%s]"  % (wait['readMember'][msg.to],chiya,setTime[msg.to]))
+                        sendMessage(msg.to, "看到訊息者 %s\n這些\n\n已讀不回者\n%s不要以為我抓不到♪\n\n此訊息偵測時間:\n[%s]"  % (wait['readMember'][msg.to],chiya,setTime[msg.to]))
                     else:
                         sendMessage(msg.to, "已讀不回者\n「set」♪ 不要以為我不知道 ♪")
                 else:
