@@ -223,13 +223,6 @@ def SEND_MESSAGE(op):
                                 print (msg.to,[g.mid])
                             except:
                                 sendText(msg.to,"error")
-		if msg.text == "測速":
-                    start = time.time()
-                    sendMessage(msg.to, "速度回報")
-                    elapsed_time = time.time() - start
-                    sendMessage(msg.to, "%sseconds" % (elapsed_time))	
-        else:
-            pass		
                 if msg.text == "me":
                     M = Message()
                     M.to = msg.to
