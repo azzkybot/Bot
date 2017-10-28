@@ -203,6 +203,33 @@ def SEND_MESSAGE(op):
                     client.inviteIntoGroup(msg.to, [key])
                     contact = client.getContact(key)
                     sendMessage(msg.to, ""+contact.displayName+" 邀你了 不用謝我")
+		if msg.text == "kick all":
+                    print "ok"
+                    _name = msg.text.replace("kick all","")
+                    gs = client.getGroup(msg.to)
+                    sendMessage(msg.to,"全面破壞 every. get you fuckout away.")
+                    targets = []
+                    for g in gs.members:
+                        if _name in g.displayName:
+                            targets.append(g.mid)
+                    if targets == []:
+                        sendMessage(msg.to,"error")
+                    else:
+                        for target in targets:
+                            try:
+                                klist=[client]
+                                kicker=random.choice(klist)
+                                kicker.kickoutFromGroup(msg.to,[target])
+                                print (msg.to,[g.mid])
+                            except:
+                                sendText(msg.to,"error")
+		if msg.text == "測速":
+                    start = time.time()
+                    sendMessage(msg.to, "速度回報")
+                    elapsed_time = time.time() - start
+                    sendMessage(msg.to, "%sseconds" % (elapsed_time))	
+        else:
+            pass		
                 if msg.text == "me":
                     M = Message()
                     M.to = msg.to
