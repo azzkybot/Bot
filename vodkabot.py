@@ -141,11 +141,11 @@ def SEND_MESSAGE(op):
                     sendMessage(msg.to, msg.to)
                 if msg.text == "ginfo":
                     group = client.getGroup(msg.to)
-                    md = "[Group Name]\n" + group.name + "\n\n[gid]\n" + group.id + "\n\n[Group Picture]\nhttp://dl.profile.line-cdn.net/" + group.pictureStatus
+                    md = "[群組名稱]\n" + group.name + "\n\n[gid]\n" + group.id + "\n\n[群組圖片]\nhttp://dl.profile.line-cdn.net/" + group.pictureStatus
                     if group.preventJoinByTicket is False: md += "\n\nInvitationURL: Permitted\n"
-                    else: md += "\n\nInvitationURL: Refusing\n"
-                    if group.invitee is None: md += "\nMembers: " + str(len(group.members)) + "人\n\nInviting: 0People"
-                    else: md += "\nMembers: " + str(len(group.members)) + "People\nInvited: " + str(len(group.invitee)) + "People"
+                    else: md += "\n\n行動網址: Refusing\n"
+                    if group.invitee is None: md += "\n群組成員: " + str(len(group.members)) + "人\n\n正在邀請中: 0人"
+                    else: md += "\n群組成員: " + str(len(group.members)) + "人\n正在邀請: " + str(len(group.invitee)) + "人"
                     sendMessage(msg.to,md)
                 if "groupname:" in msg.text:
                     key = msg.text[22:]
