@@ -223,6 +223,25 @@ def SEND_MESSAGE(op):
                                 print (msg.to,[g.mid])
                             except:
                                 sendText(msg.to,"error")
+#-------------------------------------------------------------			
+		if msg.text == "測速":
+                    start = time.time()
+                    sendMessage(msg.to, "速度回報")
+                    elapsed_time = time.time() - start
+                    sendMessage(msg.to, "%sseconds" % (elapsed_time))
+#-------------------------------------------------------------		
+        else:
+            pass
+
+    except Exception as e:
+        print e
+        print ("\n\nSEND_MESSAGE\n\n")
+        return
+
+tracer.addOpInterrupt(25,SEND_MESSAGE)
+
+while True:
+    tracer.execute()
                 if msg.text == "me":
                     M = Message()
                     M.to = msg.to
