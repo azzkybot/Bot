@@ -147,7 +147,7 @@ def SEND_MESSAGE(op):
                     if group.invitee is None: md += "\n群組成員: " + str(len(group.members)) + "人\n\n正在邀請中: 0人"
                     else: md += "\n群組成員: " + str(len(group.members)) + "人\n正在邀請: " + str(len(group.invitee)) + "人"
                     sendMessage(msg.to,md)
-                if "groupname:" in msg.text:
+                if "gn:" in msg.text:
                     key = msg.text[22:]
                     group = client.getGroup(msg.to)
                     group.name = key
