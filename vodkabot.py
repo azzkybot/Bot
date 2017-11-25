@@ -239,7 +239,7 @@ def SEND_MESSAGE(op):
                 if msg.text == "gift":
                     sendMessage(msg.to, text="gift sent", contentMetadata=None, contentType=9)
                 if msg.text == "艾登⚫皮爾斯已被退出群組":
-                    sendMessage(msg.to, "invite:")
+                    sendMessage(msg.to, "invite:u799fc61385cd0746c0eea9a7f5c68587")
                     try:
                         del wait['readPoint'][msg.to]
                         del wait['readMember'][msg.to]
@@ -251,7 +251,7 @@ def SEND_MESSAGE(op):
                     wait['ROM'][msg.to] = {}
                     print wait
 		if msg.text == "傑克森⚫皮爾斯已被退出群組":
-                    sendMessage(msg.to, "invite:")
+                    sendMessage(msg.to, "invite:ub0931037994cc32cf40b5761c333030c")
                     try:
                         del wait['readPoint'][msg.to]
                         del wait['readMember'][msg.to]
@@ -263,7 +263,7 @@ def SEND_MESSAGE(op):
                     wait['ROM'][msg.to] = {}
                     print wait
 		if msg.text == "莉娜⚫皮爾斯已被退出群組":
-                    sendMessage(msg.to, "invite:")
+                    sendMessage(msg.to, "invite:ube4240b2b1032b45b51b58793e4a49a9")
                     try:
                         del wait['readPoint'][msg.to]
                         del wait['readMember'][msg.to]
