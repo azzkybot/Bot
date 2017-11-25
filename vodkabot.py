@@ -147,7 +147,7 @@ def SEND_MESSAGE(op):
                     if group.invitee is None: md += "\n群組成員: " + str(len(group.members)) + "人\n\n正在邀請中: 0人"
                     else: md += "\n群組成員: " + str(len(group.members)) + "人\n正在邀請: " + str(len(group.invitee)) + "人"
                     sendMessage(msg.to,md)
-                if "gn:" in msg.text:
+                if "gname:" in msg.text:
                     key = msg.text[22:]
                     group = client.getGroup(msg.to)
                     group.name = key
@@ -175,7 +175,7 @@ def SEND_MESSAGE(op):
                     key = msg.text[5:]
                     client.kickoutFromGroup(msg.to, [key])
                     contact = client.getContact(key)
-                    sendMessage(msg.to, ""+contact.displayName+"處刑完成")
+                    sendMessage(msg.to, ""+contact.displayName+" 敬酒不吃 吃罰酒")
                 if "nk:" in msg.text:
                     key = msg.text[3:]
                     group = client.getGroup(msg.to)
@@ -183,10 +183,10 @@ def SEND_MESSAGE(op):
                     Mids = [contact.mid for contact in group.members]
                     if key in Names:
                         kazu = Names.index(key)
-                        sendMessage(msg.to, "要解決你 一刀就夠了")
+                        sendMessage(msg.to, "敬酒不吃")
                         client.kickoutFromGroup(msg.to, [""+Mids[kazu]+""])
                         contact = client.getContact(Mids[kazu])
-                        sendMessage(msg.to, ""+contact.displayName+" 處刑完成")
+                        sendMessage(msg.to, ""+contact.displayName+" 吃罰酒")
                     else:
                         sendMessage(msg.to, "錯誤 查無此人 提示：不能標人 名字去他人姓名欄複製")
                 if msg.text == "cancel":
@@ -238,8 +238,32 @@ def SEND_MESSAGE(op):
                     sendMessage(msg.to, "Current time is" + datetime.datetime.today().strftime('%Y年%m月%d日 %H:%M:%S') + "is")
                 if msg.text == "gift":
                     sendMessage(msg.to, text="gift sent", contentMetadata=None, contentType=9)
-                if msg.text == "set":
-                    sendMessage(msg.to, "開始記錄已讀不回 ♪\n「tes」小心喔 已讀不回者 ♪")
+                if msg.text == "艾登⚫皮爾斯已被退出群組":
+                    sendMessage(msg.to, "invite:")
+                    try:
+                        del wait['readPoint'][msg.to]
+                        del wait['readMember'][msg.to]
+                    except:
+                        pass
+                    wait['readPoint'][msg.to] = msg.id
+                    wait['readMember'][msg.to] = ""
+                    wait['setTime'][msg.to] = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+                    wait['ROM'][msg.to] = {}
+                    print wait
+		if msg.text == "傑克森⚫皮爾斯已被退出群組":
+                    sendMessage(msg.to, "invite:")
+                    try:
+                        del wait['readPoint'][msg.to]
+                        del wait['readMember'][msg.to]
+                    except:
+                        pass
+                    wait['readPoint'][msg.to] = msg.id
+                    wait['readMember'][msg.to] = ""
+                    wait['setTime'][msg.to] = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+                    wait['ROM'][msg.to] = {}
+                    print wait
+		if msg.text == "莉娜⚫皮爾斯已被退出群組":
+                    sendMessage(msg.to, "invite:")
                     try:
                         del wait['readPoint'][msg.to]
                         del wait['readMember'][msg.to]
