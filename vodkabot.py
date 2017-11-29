@@ -135,42 +135,7 @@ def SEND_MESSAGE(op):
                 pass
         if msg.toType == 2:
             if msg.contentType == 0:
-                if msg.text == "mid":
-                    sendMessage(msg.to, msg.from_)
-                if msg.text == "gid":
-                    sendMessage(msg.to, msg.to)
-                if msg.text == "ginfo":
-                    group = client.getGroup(msg.to)
-                    md = "[群組名稱]\n" + group.name + "\n\n[gid]\n" + group.id + "\n\n[群組圖片]\nhttp://dl.profile.line-cdn.net/" + group.pictureStatus
-                    if group.preventJoinByTicket is False: md += "\n\nInvitationURL: Permitted\n"
-                    else: md += "\n\n行動網址: Refusing\n"
-                    if group.invitee is None: md += "\n群組成員: " + str(len(group.members)) + "人\n\n正在邀請中: 0人"
-                    else: md += "\n群組成員: " + str(len(group.members)) + "人\n正在邀請: " + str(len(group.invitee)) + "人"
-                    sendMessage(msg.to,md)
-                if "gname:" in msg.text:
-                    key = msg.text[22:]
-                    group = client.getGroup(msg.to)
-                    group.name = key
-                    client.updateGroup(group)
-                    sendMessage(msg.to,"群組名稱"+key+"已更改")
-                if msg.text == "url":
-                    sendMessage(msg.to,"line://ti/g/" + client._client.reissueGroupTicket(msg.to))
-                if msg.text == "urlon":
-                    group = client.getGroup(msg.to)
-                    if group.preventJoinByTicket == False:
-                        sendMessage(msg.to, "行動網址早就打開了")
-                    else:
-                        group.preventJoinByTicket = False
-                        client.updateGroup(group)
-                        sendMessage(msg.to, "行動網址已開啟")
-                if msg.text == "urloff":
-                    group = client.getGroup(msg.to)
-                    if group.preventJoinByTicket == True:
-                        sendMessage(msg.to, "行動網址早就關閉了")
-                    else:
-                        group.preventJoinByTicket = True
-                        client.updateGroup(group)
-                        sendMessage(msg.to, "行動網址已關閉")
+                
                 if "kick:" in msg.text:
                     key = msg.text[5:]
                     client.kickoutFromGroup(msg.to, [key])
@@ -223,21 +188,7 @@ def SEND_MESSAGE(op):
                                 print (msg.to,[g.mid])
                             except:
                                 sendText(msg.to,"error")
-                if msg.text == "me":
-                    M = Message()
-                    M.to = msg.to
-                    M.contentType = 13
-                    M.contentMetadata = {'mid': msg.from_}
-                    client.sendMessage(M)
-                if "show:" in msg.text:
-                    key = msg.text[-33:]
-                    sendMessage(msg.to, text=None, contentMetadata={'mid': key}, contentType=13)
-                    contact = client.getContact(key)
-                    sendMessage(msg.to, ""+contact.displayName+"'s contact")
-                if msg.text == "time":
-                    sendMessage(msg.to, "Current time is" + datetime.datetime.today().strftime('%Y年%m月%d日 %H:%M:%S') + "is")
-                if msg.text == "gift":
-                    sendMessage(msg.to, text="gift sent", contentMetadata=None, contentType=9)
+
                 if msg.text == "艾登⚫皮爾斯已被退出群組":
                     sendMessage(msg.to, "invite:u799fc61385cd0746c0eea9a7f5c68587")
                     try:
